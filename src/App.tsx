@@ -1,22 +1,19 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import TodoForm from "./components/TodoForm";
-import TodoList from "./components/TodoList";
-
-import { setTodos } from "src/redux/action";
+import { useDispatch } from "react-redux";
+import { loadTodos } from "./redux/action";
+import TodoContainer from "./components/TodoContainer";
 
 function App() {
-  // const dispatch = useDispatch();
-  const { todos } = useSelector((state: any) => ({ todos: state.todos }));
+  const dispatch = useDispatch();
 
-  /*  useEffect(() => {
-    dispatch(setTodos(todos));
+  // store tasks에 데이터 넣기 => dispatch 이용
+  useEffect(() => {
+    dispatch(loadTodos());
   }, []);
- */
+
   return (
     <div className="App">
-      <TodoForm />
-      <TodoList todos={todos} />
+      <TodoContainer />
     </div>
   );
 }
