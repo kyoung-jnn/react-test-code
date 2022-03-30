@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { loadTodos } from "./redux/action";
+import InfoContainer from "./components/InfoContainer";
 import TodoContainer from "./components/TodoContainer";
+import { loadTodos } from "./redux/action";
 
 function App() {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <div className="App">
+      <InfoContainer onCancel={() => {}} onSubmit={() => {}} />
       <TodoContainer />
     </div>
   );
