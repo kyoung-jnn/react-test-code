@@ -1,4 +1,3 @@
-/* eslint-disable jest/no-mocks-import */
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { useDispatch, useSelector } from "react-redux";

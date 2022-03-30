@@ -1,5 +1,5 @@
 /* eslint-disable testing-library/prefer-screen-queries */
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import TodoList, { TodoListProp } from ".";
 
@@ -15,7 +15,7 @@ const renderTodoList = (props?: Partial<TodoListProp>) => {
   // Props로 넘겨줄 mock 함수 구현
   const handleRemove = jest.fn();
 
-  const view = render(
+  render(
     <TodoList
       todos={props?.todos || todos}
       onRemove={handleRemove}
@@ -23,16 +23,16 @@ const renderTodoList = (props?: Partial<TodoListProp>) => {
     />
   );
 
-  return { view, handleRemove };
+  return { handleRemove };
 };
 
 describe("<TodoList/>", () => {
   describe("with todos", () => {
     it("Renders TodoList", () => {
-      const { view } = renderTodoList();
+      renderTodoList();
 
-      expect(view.container).toHaveTextContent("RTL 배우기");
-      expect(view.container).toHaveTextContent("TDD 배우기");
+      expect(screen.getByText("RTL 배우기")).toBeInTheDocument();
+      expect(screen.getByText("TDD 배우기")).toBeInTheDocument();
     });
 
     it("Renders '삭제' buttons to delete a todo", () => {
@@ -53,9 +53,9 @@ describe("<TodoList/>", () => {
       */
 
       // 중복 제거 코드 사용시
-      const { view, handleRemove } = renderTodoList(); // 중복 제거용 함수
+      const { handleRemove } = renderTodoList(); // 중복 제거용 함수
 
-      const buttons = view.getAllByText("삭제");
+      const buttons = screen.getAllByText("삭제");
       userEvent.click(buttons[0]);
 
       expect(handleRemove).toBeCalledWith(1);
@@ -64,9 +64,9 @@ describe("<TodoList/>", () => {
 
   describe("without todos", () => {
     it("Renders TodoList", () => {
-      const { view } = renderTodoList({ todos: [] });
+      renderTodoList({ todos: [] });
 
-      expect(view.container).toHaveTextContent("할 일이 없어요");
+      expect(screen.getByText("할 일이 없어요")).toBeInTheDocument();
     });
   });
 });
