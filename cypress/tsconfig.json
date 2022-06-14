@@ -1,0 +1,7 @@
+{
+  "include": ["**/*.ts"],
+  "compilerOptions": {
+    "target": "es5",
+    "types": ["cypress", "@testing-library/cypress", "node"]
+  }
+}

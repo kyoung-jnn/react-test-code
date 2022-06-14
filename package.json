@@ -2,6 +2,14 @@
   "name": "react-test-code",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "cypress": "cypress open",
+    "cypress:chrome": "cypress run --browser chrome"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
@@ -10,6 +18,7 @@
     "@types/node": "^16.7.13",
     "@types/react": "^17.0.20",
     "@types/react-dom": "^17.0.9",
+    "axios": "^0.27.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
@@ -19,11 +28,13 @@
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@cypress/code-coverage": "^3.10.0",
+    "@testing-library/cypress": "^8.0.3",
+    "@types/cypress-cucumber-preprocessor": "^4.0.1",
+    "@types/redux-mock-store": "^1.0.3",
+    "cypress": "^10.1.0",
+    "cypress-cucumber-preprocessor": "^4.3.1"
   },
   "eslintConfig": {
     "extends": [
@@ -43,7 +54,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@types/redux-mock-store": "^1.0.3"
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
   }
 }
